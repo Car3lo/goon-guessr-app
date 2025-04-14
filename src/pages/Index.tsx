@@ -74,7 +74,7 @@ const Index = () => {
           <GameImage 
             imageUrl="https://pbs.twimg.com/media/GceW5mzXAAAWLO2?format=jpg&name=large" 
             altText="Game Image" 
-            gameWon={gameWon}
+            gameWon={gameWon} 
           />
           
           <div className="space-y-4">
@@ -102,7 +102,7 @@ const Index = () => {
                 placeholder="Enter your guess"
                 disabled={gameWon}
                 className={cn(
-                  "w-full transition-all",
+                  "w-full transition-all text-center", // Added text-center here
                   gameWon && "bg-gray-100"
                 )}
               />

@@ -12,14 +12,14 @@ const WordBlanks: React.FC<WordBlanksProps> = ({ correctWord, gameWon, isShaking
   const createBlanks = (word: string) => {
     const words = word.split(" ");
     return words
-      .map((w) => "▂".repeat(w.length))
+      .map((w) => "_".repeat(w.length))
       .join("   ");
   };
 
   return (
     <div 
       className={cn(
-        "font-mono text-center text-4xl tracking-wider transition-all",
+        "font-mono text-center text-3xl tracking-wider transition-all",
         gameWon ? "text-green-600" : "text-gray-800",
         isShaking && "animate-[shake_0.5s_ease-in-out]"
       )}
@@ -30,4 +30,3 @@ const WordBlanks: React.FC<WordBlanksProps> = ({ correctWord, gameWon, isShaking
 };
 
 export default WordBlanks;
-
