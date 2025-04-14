@@ -67,9 +67,8 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4 md:p-8">
       <Card className="w-full max-w-md mx-auto bg-white p-6 shadow-md rounded-xl">
         <div className="space-y-6">
-          <div className="text-center space-y-1">
+          <div className="text-center">
             <h1 className="text-3xl font-bold text-gray-800">Goon Guessr</h1>
-            <p className="text-gray-500 text-sm">Guess who's in the picture</p>
           </div>
           
           <GameImage 

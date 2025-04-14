@@ -15,7 +15,7 @@ const GameImage: React.FC<GameImageProps> = ({ imageUrl, altText, gameWon }) => 
         src={imageUrl} 
         alt={altText}
         className={cn(
-          "w-full h-auto object-cover transition-all duration-300",
+          "w-full object-contain max-h-[60vh] transition-all duration-300",
           gameWon ? "filter-none" : "filter brightness-[0.97] contrast-[1.03]"
         )}
       />

@@ -12,8 +12,8 @@ const WordBlanks: React.FC<WordBlanksProps> = ({ correctWord, gameWon, isShaking
   const createBlanks = (word: string) => {
     const words = word.split(" ");
     return words
-      .map((w) => "___".repeat(w.length).split('').join(' ').trim())
-      .join("      ");
+      .map((w) => "_".repeat(w.length))
+      .join("   ");
   };
 
   return (
