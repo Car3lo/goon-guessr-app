@@ -10,12 +10,12 @@ interface GameImageProps {
 
 const GameImage: React.FC<GameImageProps> = ({ imageUrl, altText, gameWon }) => {
   return (
-    <div>
+    <div className="flex justify-center">
       <img 
         src={imageUrl} 
         alt={altText}
         className={cn(
-          "w-full object-contain transition-all duration-300",
+          "w-11/12 object-contain transition-all duration-300",
           gameWon ? "filter-none" : "filter brightness-[0.97] contrast-[1.03]"
         )}
       />
@@ -24,3 +24,4 @@ const GameImage: React.FC<GameImageProps> = ({ imageUrl, altText, gameWon }) => 
 };
 
 export default GameImage;
+
