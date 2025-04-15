@@ -17,6 +17,7 @@ const Index = () => {
   const [isShaking, setIsShaking] = useState(false);
   const [timerRunning, setTimerRunning] = useState(true);
   const [finalTime, setFinalTime] = useState("");
+  const [allCorrectLetters, setAllCorrectLetters] = useState<Set<string>>(new Set());
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Focus input on component mount
@@ -33,6 +34,25 @@ const Index = () => {
     // Update the submitted guess that will be used for letter checking
     setSubmittedGuess(guess);
     
+    // Check for correct letters and add them to the set
+    const correctWords = normalizedCorrect.split(" ");
+    const guessWords = normalizedGuess.split(" ");
+    
+    const newCorrectLetters = new Set(allCorrectLetters);
+    
+    correctWords.forEach((correctWord, wordIndex) => {
+      const guessWord = guessWords[wordIndex] || "";
+      
+      for (let i = 0; i < correctWord.length; i++) {
+        if (i < guessWord.length && correctWord[i] === guessWord[i]) {
+          // Store position as "wordIndex_letterIndex"
+          newCorrectLetters.add(`${wordIndex}_${i}`);
+        }
+      }
+    });
+    
+    setAllCorrectLetters(newCorrectLetters);
+    
     if (normalizedGuess === normalizedCorrect && !gameWon) {
       setGameWon(true);
       setTimerRunning(false);
@@ -40,6 +60,9 @@ const Index = () => {
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 500);
     }
+    
+    // Clear the current guess after submitting
+    setGuess("");
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -74,6 +97,7 @@ const Index = () => {
               gameWon={gameWon} 
               isShaking={isShaking}
               currentGuess={submittedGuess}
+              allCorrectLetters={allCorrectLetters}
             />
             
             <div className="flex items-center justify-center">

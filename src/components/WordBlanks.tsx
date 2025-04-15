@@ -7,13 +7,15 @@ interface WordBlanksProps {
   gameWon: boolean;
   isShaking: boolean;
   currentGuess?: string;
+  allCorrectLetters?: Set<string>; // Add a prop to track all correct letters
 }
 
 const WordBlanks: React.FC<WordBlanksProps> = ({ 
   correctWord, 
   gameWon, 
   isShaking,
-  currentGuess = ""
+  currentGuess = "",
+  allCorrectLetters = new Set()
 }) => {
   const createBlanksWithCorrectLetters = (word: string, guess: string) => {
     const normalizedGuess = guess.toLowerCase().trim();
@@ -28,8 +30,14 @@ const WordBlanks: React.FC<WordBlanksProps> = ({
       const guessWord = guessWords[wordIndex] || ""; // Use empty string if no corresponding word in guess
       
       for (let i = 0; i < correctWord.length; i++) {
-        // Show letter only if it's in the correct position within the word
-        if (i < guessWord.length && correctWord[i] === guessWord[i]) {
+        // Get the position identifier for this letter (wordIndex_letterIndex)
+        const positionKey = `${wordIndex}_${i}`;
+        
+        // Show letter if it's in the correct position or has been correctly guessed before
+        if (
+          (i < guessWord.length && correctWord[i] === guessWord[i]) || 
+          allCorrectLetters.has(positionKey)
+        ) {
           displayWord += word.split(" ")[wordIndex][i]; // Use original case from correct word
         } else {
           displayWord += "_";
