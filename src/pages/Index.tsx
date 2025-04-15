@@ -13,6 +13,7 @@ const Index = () => {
   const correctWord = "Violet Myers"; // Matches the image
   const [gameWon, setGameWon] = useState(false);
   const [guess, setGuess] = useState("");
+  const [submittedGuess, setSubmittedGuess] = useState("");
   const [isShaking, setIsShaking] = useState(false);
   const [timerRunning, setTimerRunning] = useState(true);
   const [finalTime, setFinalTime] = useState("");
@@ -29,14 +30,15 @@ const Index = () => {
     const normalizedGuess = guess.toLowerCase().trim();
     const normalizedCorrect = correctWord.toLowerCase();
     
+    // Update the submitted guess that will be used for letter checking
+    setSubmittedGuess(guess);
+    
     if (normalizedGuess === normalizedCorrect && !gameWon) {
       setGameWon(true);
       setTimerRunning(false);
-      // Toast notification for correct guess removed
     } else if (guess.trim() !== "") {
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 500);
-      // Toast notification for incorrect guess removed
     }
   };
 
@@ -71,7 +73,7 @@ const Index = () => {
               correctWord={correctWord} 
               gameWon={gameWon} 
               isShaking={isShaking}
-              currentGuess={guess}
+              currentGuess={submittedGuess}
             />
             
             <div className="flex items-center justify-center">

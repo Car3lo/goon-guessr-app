@@ -19,15 +19,18 @@ const WordBlanks: React.FC<WordBlanksProps> = ({
     const normalizedGuess = guess.toLowerCase().trim();
     const normalizedCorrect = word.toLowerCase();
     
-    const words = word.split(" ");
-    const result = words.map((wordPart) => {
+    // Split both the correct word and guess into arrays of words
+    const correctWords = normalizedCorrect.split(" ");
+    const guessWords = normalizedGuess.split(" ");
+    
+    const result = correctWords.map((correctWord, wordIndex) => {
       let displayWord = "";
-      for (let i = 0; i < wordPart.length; i++) {
-        if (
-          normalizedGuess.includes(wordPart[i].toLowerCase()) ||
-          (normalizedCorrect.charAt(i) === " " && normalizedGuess.charAt(i) === " ")
-        ) {
-          displayWord += wordPart[i];
+      const guessWord = guessWords[wordIndex] || ""; // Use empty string if no corresponding word in guess
+      
+      for (let i = 0; i < correctWord.length; i++) {
+        // Show letter only if it's in the correct position within the word
+        if (i < guessWord.length && correctWord[i] === guessWord[i]) {
+          displayWord += correctWords[wordIndex][i]; // Use original case from correct word
         } else {
           displayWord += "_";
         }
