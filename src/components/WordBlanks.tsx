@@ -30,7 +30,7 @@ const WordBlanks: React.FC<WordBlanksProps> = ({
       for (let i = 0; i < correctWord.length; i++) {
         // Show letter only if it's in the correct position within the word
         if (i < guessWord.length && correctWord[i] === guessWord[i]) {
-          displayWord += correctWords[wordIndex][i]; // Use original case from correct word
+          displayWord += word.split(" ")[wordIndex][i]; // Use original case from correct word
         } else {
           displayWord += "_";
         }
