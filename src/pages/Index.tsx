@@ -70,7 +70,8 @@ const Index = () => {
             <WordBlanks 
               correctWord={correctWord} 
               gameWon={gameWon} 
-              isShaking={isShaking} 
+              isShaking={isShaking}
+              currentGuess={guess}
             />
             
             <div className="flex items-center justify-center">
