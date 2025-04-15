@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { useToast } from "@/components/ui/use-toast";
 import { Timer, Image } from "lucide-react";
 import GameImage from "@/components/GameImage";
 import WordBlanks from "@/components/WordBlanks";
@@ -18,7 +17,6 @@ const Index = () => {
   const [timerRunning, setTimerRunning] = useState(true);
   const [finalTime, setFinalTime] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-  const { toast } = useToast();
 
   // Focus input on component mount
   useEffect(() => {
@@ -34,20 +32,11 @@ const Index = () => {
     if (normalizedGuess === normalizedCorrect && !gameWon) {
       setGameWon(true);
       setTimerRunning(false);
-      
-      toast({
-        title: "Congratulations!",
-        description: `You guessed "${correctWord}" correctly!`,
-      });
+      // Toast notification for correct guess removed
     } else if (guess.trim() !== "") {
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 500);
-      
-      toast({
-        variant: "destructive",
-        title: "Incorrect guess",
-        description: "Try again!",
-      });
+      // Toast notification for incorrect guess removed
     }
   };
 
@@ -102,7 +91,7 @@ const Index = () => {
                 placeholder="Enter your guess"
                 disabled={gameWon}
                 className={cn(
-                  "w-full transition-all text-center", // Added text-center here
+                  "w-full transition-all text-center",
                   gameWon && "bg-gray-100"
                 )}
               />
