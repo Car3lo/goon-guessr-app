@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 const Index = () => {
   // Game settings
-  const correctWord = "Violet Myers"; // Matches the image
+  const correctWord = "Sabrina Carpenter"; // Matches the image
   const [gameWon, setGameWon] = useState(false);
   const [guess, setGuess] = useState("");
   const [submittedGuess, setSubmittedGuess] = useState("");
@@ -86,7 +86,7 @@ const Index = () => {
           </div>
           
           <GameImage 
-            imageUrl="https://pbs.twimg.com/media/GceW5mzXAAAWLO2?format=jpg&name=large" 
+            imageUrl="https://pbs.twimg.com/media/GoVPfdBWMAEHByq?format=jpg&name=medium" 
             altText="Game Image" 
             gameWon={gameWon} 
           />
