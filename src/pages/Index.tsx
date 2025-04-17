@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -9,7 +8,6 @@ import StopWatch from "@/components/StopWatch";
 import { cn } from "@/lib/utils";
 
 const Index = () => {
-  // Game settings
   const correctWord = "Sabrina Carpenter"; // Matches the image
   const [gameWon, setGameWon] = useState(false);
   const [guess, setGuess] = useState("");
@@ -18,9 +16,10 @@ const Index = () => {
   const [timerRunning, setTimerRunning] = useState(true);
   const [finalTime, setFinalTime] = useState("");
   const [allCorrectLetters, setAllCorrectLetters] = useState<Set<string>>(new Set());
+  const [wrongAttempts, setWrongAttempts] = useState(0);
+  const [revealed, setRevealed] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Focus input on component mount
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
@@ -31,10 +30,8 @@ const Index = () => {
     const normalizedGuess = guess.toLowerCase().trim();
     const normalizedCorrect = correctWord.toLowerCase();
     
-    // Update the submitted guess that will be used for letter checking
     setSubmittedGuess(guess);
     
-    // Check for correct letters and add them to the set
     const correctWords = normalizedCorrect.split(" ");
     const guessWords = normalizedGuess.split(" ");
     
@@ -45,7 +42,6 @@ const Index = () => {
       
       for (let i = 0; i < correctWord.length; i++) {
         if (i < guessWord.length && correctWord[i] === guessWord[i]) {
-          // Store position as "wordIndex_letterIndex"
           newCorrectLetters.add(`${wordIndex}_${i}`);
         }
       }
@@ -59,10 +55,15 @@ const Index = () => {
     } else if (guess.trim() !== "") {
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 500);
+      setWrongAttempts(prev => prev + 1);
     }
     
-    // Clear the current guess after submitting
     setGuess("");
+  };
+
+  const handleReveal = () => {
+    setRevealed(true);
+    setTimerRunning(false);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -98,6 +99,7 @@ const Index = () => {
               isShaking={isShaking}
               currentGuess={submittedGuess}
               allCorrectLetters={allCorrectLetters}
+              revealed={revealed}
             />
             
             <div className="flex items-center justify-center">
@@ -116,12 +118,21 @@ const Index = () => {
                 onChange={(e) => setGuess(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Enter your guess (Username)"
-                disabled={gameWon}
+                disabled={gameWon || revealed}
                 className={cn(
                   "w-full transition-all text-center",
-                  gameWon && "bg-gray-100"
+                  (gameWon || revealed) && "bg-gray-100"
                 )}
               />
+              
+              {wrongAttempts >= 5 && !revealed && !gameWon && (
+                <button
+                  onClick={handleReveal}
+                  className="w-full mt-2 py-2 px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded transition-colors"
+                >
+                  Reveal Answer
+                </button>
+              )}
               
               {gameWon && (
                 <div className="text-center text-sm text-green-600 animate-fade-in font-medium">
