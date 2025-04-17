@@ -115,7 +115,7 @@ const Index = () => {
                 value={guess}
                 onChange={(e) => setGuess(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Enter your guess"
+                placeholder="Enter your guess (Username)"
                 disabled={gameWon}
                 className={cn(
                   "w-full transition-all text-center",
