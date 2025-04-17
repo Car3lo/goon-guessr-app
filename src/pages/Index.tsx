@@ -136,8 +136,8 @@ const Index = () => {
               
               {gameWon && (
                 <div className="text-center text-sm text-green-600 animate-fade-in font-medium">
-                  <p>You guessed it in {finalTime}!</p>
-                  <p>Goon-guess a new picture next week.</p>
+                  You guessed it in {finalTime}!
+                  Goon a new picture next week!
                 </div>
               )}
             </div>
