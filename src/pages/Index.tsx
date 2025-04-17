@@ -14,6 +14,7 @@ import GameImage from "@/components/GameImage";
 import WordBlanks from "@/components/WordBlanks";
 import StopWatch from "@/components/StopWatch";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/lib/supabase";
 
 const Index = () => {
   const correctWord = "Sabrina Carpenter"; // Matches the image
@@ -26,7 +27,59 @@ const Index = () => {
   const [allCorrectLetters, setAllCorrectLetters] = useState<Set<string>>(new Set());
   const [wrongAttempts, setWrongAttempts] = useState(0);
   const [revealed, setRevealed] = useState(false);
+  const [correctGuessCount, setCorrectGuessCount] = useState(0);
+  const [previousDayImage, setPreviousDayImage] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    fetchStats();
+    fetchPreviousDayImage();
+  }, []);
+
+  const fetchStats = async () => {
+    const { data, error } = await supabase
+      .from('daily_stats')
+      .select('correct_guesses')
+      .eq('date', new Date().toISOString().split('T')[0])
+      .single();
+
+    if (data) {
+      setCorrectGuessCount(data.correct_guesses);
+    }
+  };
+
+  const fetchPreviousDayImage = async () => {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    
+    const { data, error } = await supabase
+      .from('daily_images')
+      .select('name')
+      .eq('date', yesterday.toISOString().split('T')[0])
+      .single();
+
+    if (data) {
+      setPreviousDayImage(data.name);
+    }
+  };
+
+  const updateCorrectGuessCount = async () => {
+    const today = new Date().toISOString().split('T')[0];
+    
+    const { data, error } = await supabase
+      .from('daily_stats')
+      .upsert(
+        { 
+          date: today, 
+          correct_guesses: correctGuessCount + 1 
+        },
+        { onConflict: 'date' }
+      );
+
+    if (!error) {
+      setCorrectGuessCount(prev => prev + 1);
+    }
+  };
 
   useEffect(() => {
     if (inputRef.current) {
@@ -60,6 +113,7 @@ const Index = () => {
     if (normalizedGuess === normalizedCorrect && !gameWon) {
       setGameWon(true);
       setTimerRunning(false);
+      updateCorrectGuessCount();
     } else if (guess.trim() !== "") {
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 500);
@@ -133,6 +187,10 @@ const Index = () => {
                 )}
               />
               
+              <div className="text-center text-sm text-gray-500">
+                {correctGuessCount} people have already found out today!
+              </div>
+
               {wrongAttempts >= 5 && !revealed && !gameWon && (
                 <button
                   onClick={handleReveal}
@@ -152,6 +210,10 @@ const Index = () => {
           </div>
         </div>
       </Card>
+      
+      <div className="text-[#C8C8C9] text-sm mt-4 mb-16">
+        Yesterday's picture was {previousDayImage}
+      </div>
       
       <footer className="w-full fixed bottom-0 left-0 bg-transparent py-4 text-center flex justify-center items-center gap-4">
         <p className="text-[#C8C8C9] text-sm">
