@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -14,7 +15,7 @@ import GameImage from "@/components/GameImage";
 import WordBlanks from "@/components/WordBlanks";
 import StopWatch from "@/components/StopWatch";
 import { cn } from "@/lib/utils";
-import { supabase } from "@/lib/supabase";
+import { safeSupabaseCall } from "@/lib/supabase";
 
 const Index = () => {
   const correctWord = "Sabrina Carpenter"; // Matches the image
@@ -37,13 +38,15 @@ const Index = () => {
   }, []);
 
   const fetchStats = async () => {
-    const { data, error } = await supabase
-      .from('daily_stats')
-      .select('correct_guesses')
-      .eq('date', new Date().toISOString().split('T')[0])
-      .single();
+    const { data, error } = await safeSupabaseCall((client) => 
+      client
+        .from('daily_stats')
+        .select('correct_guesses')
+        .eq('date', new Date().toISOString().split('T')[0])
+        .single()
+    );
 
-    if (data) {
+    if (data && !error) {
       setCorrectGuessCount(data.correct_guesses);
     }
   };
@@ -52,13 +55,15 @@ const Index = () => {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     
-    const { data, error } = await supabase
-      .from('daily_images')
-      .select('name')
-      .eq('date', yesterday.toISOString().split('T')[0])
-      .single();
+    const { data, error } = await safeSupabaseCall((client) =>
+      client
+        .from('daily_images')
+        .select('name')
+        .eq('date', yesterday.toISOString().split('T')[0])
+        .single()
+    );
 
-    if (data) {
+    if (data && !error) {
       setPreviousDayImage(data.name);
     }
   };
@@ -66,15 +71,17 @@ const Index = () => {
   const updateCorrectGuessCount = async () => {
     const today = new Date().toISOString().split('T')[0];
     
-    const { data, error } = await supabase
-      .from('daily_stats')
-      .upsert(
-        { 
-          date: today, 
-          correct_guesses: correctGuessCount + 1 
-        },
-        { onConflict: 'date' }
-      );
+    const { error } = await safeSupabaseCall((client) =>
+      client
+        .from('daily_stats')
+        .upsert(
+          { 
+            date: today, 
+            correct_guesses: correctGuessCount + 1 
+          },
+          { onConflict: 'date' }
+        )
+    );
 
     if (!error) {
       setCorrectGuessCount(prev => prev + 1);
