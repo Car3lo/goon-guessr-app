@@ -117,7 +117,7 @@ const Index = () => {
                 value={guess}
                 onChange={(e) => setGuess(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Enter your guess (Username)"
+                placeholder="Enter your guess (Full Name)"
                 disabled={gameWon || revealed}
                 className={cn(
                   "w-full transition-all text-center",
@@ -130,13 +130,14 @@ const Index = () => {
                   onClick={handleReveal}
                   className="w-full mt-2 py-2 px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded transition-colors"
                 >
-                  Reveal Answer
+                  STOP EDGING
                 </button>
               )}
               
               {gameWon && (
                 <div className="text-center text-sm text-green-600 animate-fade-in font-medium">
                   You guessed it in {finalTime}!
+                  Goon a new picture next week!
                 </div>
               )}
             </div>
