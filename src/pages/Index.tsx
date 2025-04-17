@@ -1,8 +1,15 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Timer, Image } from "lucide-react";
+import { Timer, Coffee, Info } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import GameImage from "@/components/GameImage";
 import WordBlanks from "@/components/WordBlanks";
 import StopWatch from "@/components/StopWatch";
@@ -146,14 +153,36 @@ const Index = () => {
         </div>
       </Card>
       
-      <footer className="w-full fixed bottom-0 left-0 bg-transparent py-4 text-center">
+      <footer className="w-full fixed bottom-0 left-0 bg-transparent py-4 text-center flex justify-center items-center gap-4">
         <p className="text-[#C8C8C9] text-sm">
           Goon Guessr: Where Pop Culture Meets Guess Game
         </p>
+        <a
+          href="https://ko-fi.com/yourusername"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#C8C8C9] hover:text-[#a8a8a9] transition-colors"
+        >
+          <Coffee size={20} />
+        </a>
+        <Dialog>
+          <DialogTrigger asChild>
+            <button className="text-[#C8C8C9] hover:text-[#a8a8a9] transition-colors">
+              <Info size={20} />
+            </button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>About Goon Guessr</DialogTitle>
+              <DialogDescription>
+                A daily guessing game where you try to identify pop culture figures. Test your knowledge and challenge your friends!
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
       </footer>
     </div>
   );
 };
 
 export default Index;
-
