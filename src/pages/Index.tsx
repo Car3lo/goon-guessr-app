@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -144,8 +145,15 @@ const Index = () => {
           </div>
         </div>
       </Card>
+      
+      <footer className="w-full fixed bottom-0 left-0 bg-transparent py-4 text-center">
+        <p className="text-[#C8C8C9] text-sm">
+          Goon Guessr: Where Pop Culture Meets Guess Game
+        </p>
+      </footer>
     </div>
   );
 };
 
 export default Index;
+
