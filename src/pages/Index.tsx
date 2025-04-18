@@ -124,7 +124,7 @@ const Index = () => {
           </DialogTrigger>
           <DialogContent className="sm:max-w-[500px]">
             <DialogHeader>
-              <DialogTitle>About Goon Guessr</DialogTitle>
+              <DialogTitle>Info</DialogTitle>
             </DialogHeader>
             <div className="space-y-4 text-left">
               <section>
