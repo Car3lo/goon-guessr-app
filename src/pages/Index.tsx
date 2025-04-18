@@ -38,13 +38,13 @@ const Index = () => {
   }, []);
 
   const fetchStats = async () => {
-    const { data, error } = await safeSupabaseCall((client) => 
-      client
+    const { data, error } = await safeSupabaseCall(async (client) => {
+      return await client
         .from('daily_stats')
         .select('correct_guesses')
         .eq('date', new Date().toISOString().split('T')[0])
-        .single()
-    );
+        .single();
+    });
 
     if (data && !error) {
       setCorrectGuessCount(data.correct_guesses);
@@ -55,24 +55,26 @@ const Index = () => {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     
-    const { data, error } = await safeSupabaseCall((client) =>
-      client
+    const { data, error } = await safeSupabaseCall(async (client) => {
+      return await client
         .from('daily_images')
         .select('name')
         .eq('date', yesterday.toISOString().split('T')[0])
-        .single()
-    );
+        .single();
+    });
 
     if (data && !error) {
       setPreviousDayImage(data.name);
+    } else {
+      setPreviousDayImage("Unknown");
     }
   };
 
   const updateCorrectGuessCount = async () => {
     const today = new Date().toISOString().split('T')[0];
     
-    const { error } = await safeSupabaseCall((client) =>
-      client
+    const { error } = await safeSupabaseCall(async (client) => {
+      return await client
         .from('daily_stats')
         .upsert(
           { 
@@ -80,8 +82,8 @@ const Index = () => {
             correct_guesses: correctGuessCount + 1 
           },
           { onConflict: 'date' }
-        )
-    );
+        );
+    });
 
     if (!error) {
       setCorrectGuessCount(prev => prev + 1);
