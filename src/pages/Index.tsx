@@ -103,7 +103,7 @@ const Index = () => {
       />
 
       <div className="text-[#C8C8C9] text-sm mt-4 mb-16">
-        Yesterday's picture was blank
+        Yesterday's picture was Violet Myers
       </div>
       
       <footer className="w-full fixed bottom-0 left-0 bg-transparent py-4 text-center flex justify-center items-center gap-4">
