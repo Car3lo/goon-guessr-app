@@ -124,13 +124,42 @@ const Index = () => {
               <Info size={20} />
             </button>
           </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px]">
+          <DialogContent className="sm:max-w-[500px]">
             <DialogHeader>
               <DialogTitle>About Goon Guessr</DialogTitle>
-              <DialogDescription>
-                A daily guessing game where you try to identify pop culture figures. Test your knowledge and challenge your friends!
-              </DialogDescription>
             </DialogHeader>
+            <div className="space-y-4 text-left">
+              <section>
+                <h3 className="font-semibold mb-2">About Goon Guessr</h3>
+                <p>Every day, identify a different model featured from Pornhub, Onlyfans, Twitter/Instagram, and Pop Culture.</p>
+                <p className="mt-2">All photos are from publicly available sources.</p>
+                <p className="mt-2">
+                  Inspired by games like <a 
+                    href="https://loldle.net/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-blue-500 hover:underline"
+                  >
+                    loldle
+                  </a>
+                </p>
+              </section>
+              
+              <section className="mt-4">
+                <h3 className="font-semibold mb-2">Contact & Feedback</h3>
+                <p>Have questions, feedback, or need to request a photo removal?</p>
+                <p className="mt-2">
+                  Email us at <span className="text-blue-500">goonguessr6@gmail.com</span> for:
+                </p>
+                <ul className="list-disc list-inside mt-2 space-y-1">
+                  <li>Photo removal requests (if you are a featured model).</li>
+                  <li>Suggestions or inquiries (for model-specific feedback, please include Picture, Name, and Site Link).</li>
+                  <li>Wrong info or errors.</li>
+                  <li>Just want to say Hi! 😎</li>
+                </ul>
+                <p className="mt-2">Cheers, Goon Guessr 🍻</p>
+              </section>
+            </div>
           </DialogContent>
         </Dialog>
       </footer>
@@ -139,3 +168,4 @@ const Index = () => {
 };
 
 export default Index;
+
