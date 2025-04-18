@@ -1,5 +1,6 @@
+
 import React, { useState, useEffect, useRef } from "react";
-import { Timer, Coffee, Info } from "lucide-react";
+import { Coffee, Info } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -98,6 +99,7 @@ const Index = () => {
         onReveal={handleReveal}
         onTimerUpdate={handleTimerUpdate}
         inputRef={inputRef}
+        finalTime={finalTime}
       />
 
       <div className="text-[#C8C8C9] text-sm mt-4 mb-16">

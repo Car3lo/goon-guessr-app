@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Timer } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import GameImage from "@/components/GameImage";
@@ -22,6 +23,7 @@ interface GameContainerProps {
   onReveal: () => void;
   onTimerUpdate: (time: string) => void;
   inputRef: React.RefObject<HTMLInputElement>;
+  finalTime?: string;
 }
 
 const GameContainer: React.FC<GameContainerProps> = ({
@@ -38,7 +40,8 @@ const GameContainer: React.FC<GameContainerProps> = ({
   onKeyDown,
   onReveal,
   onTimerUpdate,
-  inputRef
+  inputRef,
+  finalTime = ""
 }) => {
   return (
     <Card className="w-full max-w-md mx-auto bg-white p-6 shadow-md rounded-xl">
