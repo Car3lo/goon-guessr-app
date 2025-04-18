@@ -100,7 +100,7 @@ const GameContainer: React.FC<GameContainerProps> = ({
             
             {gameWon && (
               <div className="text-center text-sm text-green-600 animate-fade-in font-medium">
-                <p>You guessed it in {finalTime}!</p>
+                <p>You gooned in {finalTime}!</p>
               </div>
             )}
           </div>
