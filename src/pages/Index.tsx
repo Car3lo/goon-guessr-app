@@ -1,10 +1,8 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { Coffee, Info } from "lucide-react";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -168,4 +166,3 @@ const Index = () => {
 };
 
 export default Index;
-
