@@ -108,10 +108,10 @@ const Index = () => {
       
       <footer className="w-full fixed bottom-0 left-0 bg-transparent py-4 text-center flex justify-center items-center gap-4">
         <p className="text-[#C8C8C9] text-sm">
-          Goon Guessr: Where Pop Culture Meets Guess Game
+          Goon Guessr: 
         </p>
         <a
-          href="https://ko-fi.com/yourusername"
+          href="https://ko-fi.com/cartilosan"
           target="_blank"
           rel="noopener noreferrer"
           className="text-[#C8C8C9] hover:text-[#a8a8a9] transition-colors"
