@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Timer } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -24,6 +23,7 @@ interface GameContainerProps {
   onTimerUpdate: (time: string) => void;
   inputRef: React.RefObject<HTMLInputElement>;
   finalTime?: string;
+  imageUrls: string[];
 }
 
 const GameContainer: React.FC<GameContainerProps> = ({
@@ -41,7 +41,8 @@ const GameContainer: React.FC<GameContainerProps> = ({
   onReveal,
   onTimerUpdate,
   inputRef,
-  finalTime = ""
+  finalTime = "",
+  imageUrls
 }) => {
   return (
     <Card className="w-full max-w-md mx-auto bg-white p-6 shadow-md rounded-xl">
@@ -51,7 +52,7 @@ const GameContainer: React.FC<GameContainerProps> = ({
         </div>
         
         <GameImage 
-          imageUrl="https://pbs.twimg.com/media/GoVPfdBWMAEHByq?format=jpg&name=medium" 
+          imageUrls={imageUrls}
           altText="Game Image" 
           gameWon={gameWon} 
         />

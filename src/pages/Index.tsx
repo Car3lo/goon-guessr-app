@@ -10,7 +10,7 @@ import {
 import GameContainer from "@/components/GameContainer";
 
 const Index = () => {
-  const correctWord = "Sabrina Carpenter"; // Matches the image
+  const correctWord = "Sabrina Carpenter"; // Matches the images
   const [gameWon, setGameWon] = useState(false);
   const [guess, setGuess] = useState("");
   const [submittedGuess, setSubmittedGuess] = useState("");
@@ -98,6 +98,11 @@ const Index = () => {
         onTimerUpdate={handleTimerUpdate}
         inputRef={inputRef}
         finalTime={finalTime}
+        imageUrls={[
+          "https://pbs.twimg.com/media/GoVPfdBWMAEHByq?format=jpg&name=medium",
+          "https://pbs.twimg.com/media/GoVPfdBWcAE4ByQ?format=jpg&name=medium",
+          "https://pbs.twimg.com/media/GoVPfdBWYAEHByq?format=jpg&name=medium"
+        ]}
       />
 
       <div className="text-[#C8C8C9] text-sm mt-4 mb-16">
