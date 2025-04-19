@@ -110,7 +110,7 @@ const Index = () => {
       
       <footer className="w-full fixed bottom-0 left-0 bg-transparent py-4 text-center flex justify-center items-center gap-4">
         <p className="text-[#C8C8C9] text-sm">
-          New Picture Every 24 Hours 
+          New Baddie Every 24 Hours 
         </p>
         <a
           href="https://ko-fi.com/cartilosan"
