@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { Coffee, Info } from "lucide-react";
 import {
@@ -101,8 +100,7 @@ const Index = () => {
         finalTime={finalTime}
         imageUrls={[
           "https://pbs.twimg.com/media/GoVPfdBWMAEHByq?format=jpg&name=medium",
-          "https://pbs.twimg.com/media/GooRwDwXMAAKjzs?format=jpg&name=large",
-          "https://pbs.twimg.com/media/GoV1sJ5XsAAKNi_?format=jpg&name=900x900"
+          "https://pbs.twimg.com/media/GooRwDwXMAAKjzs?format=jpg&name=large"
         ]}
       />
 
