@@ -8,6 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface GameImageProps {
   imageUrls: string[];
@@ -16,8 +17,10 @@ interface GameImageProps {
 }
 
 const GameImage: React.FC<GameImageProps> = ({ imageUrls, altText, gameWon }) => {
+  const showArrows = imageUrls.length > 1;
+  
   return (
-    <Carousel className="w-full">
+    <Carousel className="w-full relative group">
       <CarouselContent>
         {imageUrls.map((url, index) => (
           <CarouselItem key={index}>
@@ -34,8 +37,20 @@ const GameImage: React.FC<GameImageProps> = ({ imageUrls, altText, gameWon }) =>
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="left-2" />
-      <CarouselNext className="right-2" />
+      {showArrows && (
+        <>
+          <CarouselPrevious className="absolute -left-12 opacity-40 hover:opacity-100 transition-opacity duration-200" asChild>
+            <button className="bg-transparent hover:bg-transparent border-none">
+              <ChevronLeft className="h-8 w-8 text-gray-600" />
+            </button>
+          </CarouselPrevious>
+          <CarouselNext className="absolute -right-12 opacity-40 hover:opacity-100 transition-opacity duration-200" asChild>
+            <button className="bg-transparent hover:bg-transparent border-none">
+              <ChevronRight className="h-8 w-8 text-gray-600" />
+            </button>
+          </CarouselNext>
+        </>
+      )}
     </Carousel>
   );
 };
