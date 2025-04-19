@@ -23,10 +23,7 @@ interface GameContainerProps {
   onTimerUpdate: (time: string) => void;
   inputRef: React.RefObject<HTMLInputElement>;
   finalTime?: string;
-  imageUrls: Array<{
-    url: string;
-    source: string;
-  }>;
+  imageUrls: string[];
 }
 
 const GameContainer: React.FC<GameContainerProps> = ({
@@ -58,7 +55,6 @@ const GameContainer: React.FC<GameContainerProps> = ({
           imageUrls={imageUrls}
           altText="Game Image" 
           gameWon={gameWon} 
-          revealed={revealed}
         />
         
         <div className="space-y-4">
