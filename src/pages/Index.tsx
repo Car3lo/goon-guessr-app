@@ -100,8 +100,7 @@ const Index = () => {
         finalTime={finalTime}
         imageUrls={[
           "https://pbs.twimg.com/media/GoVPfdBWMAEHByq?format=jpg&name=medium",
-          "https://pbs.twimg.com/media/GooRwDwXMAAKjzs?format=jpg&name=large",
-          "https://pbs.twimg.com/media/GoVPfdBWYAEHByq?format=jpg&name=medium"
+          "https://pbs.twimg.com/media/GooRwDwXMAAKjzs?format=jpg&name=large"
         ]}
       />
 
