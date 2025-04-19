@@ -128,11 +128,11 @@ const Index = () => {
           </DialogTrigger>
           <DialogContent className="sm:max-w-[500px]">
             <DialogHeader>
-              <DialogTitle>Info</DialogTitle>
+              <DialogTitle>Goon Guessr v1.0</DialogTitle>
             </DialogHeader>
             <div className="space-y-4 text-left">
               <section>
-                <h3 className="font-semibold mb-2">About Goon Guessr</h3>
+                <h3 className="font-semibold mb-2">About</h3>
                 <p>Every day, identify a different model featured from Pornhub, Onlyfans, Twitter/Instagram, and Pop Culture.</p>
                 <p className="mt-2">All photos are from publicly available sources.</p>
                 <p className="mt-2">
