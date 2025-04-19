@@ -9,6 +9,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
 
 interface GameImageProps {
   imageUrls: string[];
@@ -17,11 +18,32 @@ interface GameImageProps {
 }
 
 const GameImage: React.FC<GameImageProps> = ({ imageUrls, altText, gameWon }) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel();
+  const [canScrollPrev, setCanScrollPrev] = React.useState(false);
+  const [canScrollNext, setCanScrollNext] = React.useState(false);
+  
   const showArrows = imageUrls.length > 1;
   
+  React.useEffect(() => {
+    if (!emblaApi) return;
+
+    const onSelect = () => {
+      setCanScrollPrev(emblaApi.canScrollPrev());
+      setCanScrollNext(emblaApi.canScrollNext());
+    };
+
+    emblaApi.on("select", onSelect);
+    // Initialize states
+    onSelect();
+
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi]);
+  
   return (
-    <Carousel className="w-full relative group">
-      <CarouselContent>
+    <Carousel className="w-full relative group" setApi={api => {}}>
+      <CarouselContent ref={emblaRef}>
         {imageUrls.map((url, index) => (
           <CarouselItem key={index}>
             <div className="flex justify-center">
@@ -39,16 +61,20 @@ const GameImage: React.FC<GameImageProps> = ({ imageUrls, altText, gameWon }) =>
       </CarouselContent>
       {showArrows && (
         <>
-          <div className="absolute -left-12 top-1/2 -translate-y-1/2 opacity-40 hover:opacity-100 transition-opacity duration-200">
-            <CarouselPrevious className="bg-transparent hover:bg-transparent border-none">
-              <ChevronLeft className="h-8 w-8 text-gray-600" />
-            </CarouselPrevious>
-          </div>
-          <div className="absolute -right-12 top-1/2 -translate-y-1/2 opacity-40 hover:opacity-100 transition-opacity duration-200">
-            <CarouselNext className="bg-transparent hover:bg-transparent border-none">
-              <ChevronRight className="h-8 w-8 text-gray-600" />
-            </CarouselNext>
-          </div>
+          {canScrollPrev && (
+            <div className="absolute -left-12 top-1/2 -translate-y-1/2 opacity-40 hover:opacity-100 transition-opacity duration-200">
+              <div className="bg-transparent hover:bg-transparent border-none" onClick={() => emblaApi?.scrollPrev()}>
+                <ChevronLeft className="h-8 w-8 text-gray-600" />
+              </div>
+            </div>
+          )}
+          {canScrollNext && (
+            <div className="absolute -right-12 top-1/2 -translate-y-1/2 opacity-40 hover:opacity-100 transition-opacity duration-200">
+              <div className="bg-transparent hover:bg-transparent border-none" onClick={() => emblaApi?.scrollNext()}>
+                <ChevronRight className="h-8 w-8 text-gray-600" />
+              </div>
+            </div>
+          )}
         </>
       )}
     </Carousel>
