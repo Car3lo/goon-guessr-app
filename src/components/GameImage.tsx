@@ -39,16 +39,16 @@ const GameImage: React.FC<GameImageProps> = ({ imageUrls, altText, gameWon }) =>
       </CarouselContent>
       {showArrows && (
         <>
-          <CarouselPrevious className="absolute -left-12 opacity-40 hover:opacity-100 transition-opacity duration-200" asChild>
-            <button className="bg-transparent hover:bg-transparent border-none">
+          <div className="absolute -left-12 top-1/2 -translate-y-1/2 opacity-40 hover:opacity-100 transition-opacity duration-200">
+            <CarouselPrevious className="bg-transparent hover:bg-transparent border-none">
               <ChevronLeft className="h-8 w-8 text-gray-600" />
-            </button>
-          </CarouselPrevious>
-          <CarouselNext className="absolute -right-12 opacity-40 hover:opacity-100 transition-opacity duration-200" asChild>
-            <button className="bg-transparent hover:bg-transparent border-none">
+            </CarouselPrevious>
+          </div>
+          <div className="absolute -right-12 top-1/2 -translate-y-1/2 opacity-40 hover:opacity-100 transition-opacity duration-200">
+            <CarouselNext className="bg-transparent hover:bg-transparent border-none">
               <ChevronRight className="h-8 w-8 text-gray-600" />
-            </button>
-          </CarouselNext>
+            </CarouselNext>
+          </div>
         </>
       )}
     </Carousel>
