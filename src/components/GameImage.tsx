@@ -5,8 +5,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
@@ -22,6 +20,7 @@ const GameImage: React.FC<GameImageProps> = ({ imageUrls, altText, gameWon }) =>
   const [canScrollPrev, setCanScrollPrev] = React.useState(false);
   const [canScrollNext, setCanScrollNext] = React.useState(false);
   
+  // Only show arrows if there's more than one image
   const showArrows = imageUrls.length > 1;
   
   React.useEffect(() => {
@@ -42,7 +41,7 @@ const GameImage: React.FC<GameImageProps> = ({ imageUrls, altText, gameWon }) =>
   }, [emblaApi]);
   
   return (
-    <Carousel className="w-full relative group" setApi={api => {}}>
+    <Carousel className="w-full relative group">
       <CarouselContent ref={emblaRef}>
         {imageUrls.map((url, index) => (
           <CarouselItem key={index}>
@@ -63,16 +62,26 @@ const GameImage: React.FC<GameImageProps> = ({ imageUrls, altText, gameWon }) =>
         <>
           {canScrollPrev && (
             <div className="absolute -left-12 top-1/2 -translate-y-1/2 opacity-40 hover:opacity-100 transition-opacity duration-200">
-              <div className="bg-transparent hover:bg-transparent border-none" onClick={() => emblaApi?.scrollPrev()}>
+              <button 
+                className="bg-transparent hover:bg-transparent border-none cursor-pointer" 
+                onClick={() => emblaApi?.scrollPrev()}
+                type="button"
+                aria-label="Previous image"
+              >
                 <ChevronLeft className="h-8 w-8 text-gray-600" />
-              </div>
+              </button>
             </div>
           )}
           {canScrollNext && (
             <div className="absolute -right-12 top-1/2 -translate-y-1/2 opacity-40 hover:opacity-100 transition-opacity duration-200">
-              <div className="bg-transparent hover:bg-transparent border-none" onClick={() => emblaApi?.scrollNext()}>
+              <button 
+                className="bg-transparent hover:bg-transparent border-none cursor-pointer" 
+                onClick={() => emblaApi?.scrollNext()}
+                type="button"
+                aria-label="Next image"
+              >
                 <ChevronRight className="h-8 w-8 text-gray-600" />
-              </div>
+              </button>
             </div>
           )}
         </>
