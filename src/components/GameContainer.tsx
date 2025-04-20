@@ -1,14 +1,10 @@
 import React from 'react';
-import { Timer, Twitter } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import GameImage from "@/components/GameImage";
 import WordBlanks from "@/components/WordBlanks";
-import StopWatch from "@/components/StopWatch";
-import Counter from "@/components/Counter";
-import CountdownTimer from "@/components/CountdownTimer";
-import { cn } from "@/lib/utils";
-import { Info } from "lucide-react";
+import GameHeader from "@/components/GameHeader";
+import GameStats from "@/components/GameStats";
+import GameFooter from "@/components/GameFooter";
 
 interface GameContainerProps {
   correctWord: string;
@@ -56,9 +52,7 @@ const GameContainer: React.FC<GameContainerProps> = ({
   return (
     <Card className="w-full max-w-md mx-auto bg-white p-6 shadow-md rounded-xl">
       <div className="space-y-6">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-800">Goon Guessr</h1>
-        </div>
+        <GameHeader />
         
         <GameImage 
           imageUrls={imageUrls}
@@ -76,73 +70,34 @@ const GameContainer: React.FC<GameContainerProps> = ({
             revealed={revealed}
           />
           
-          <div className="flex items-center justify-center">
-            <Timer className="w-4 h-4 mr-2 text-gray-500" />
-            <StopWatch 
-              running={timerRunning} 
-              onTimerUpdate={onTimerUpdate}
-            />
-          </div>
+          <GameStats 
+            timerRunning={timerRunning}
+            onTimerUpdate={onTimerUpdate}
+            gameWon={gameWon}
+            revealed={revealed}
+            finalTime={finalTime}
+            guess={guess}
+            onGuessChange={onGuessChange}
+            onKeyDown={onKeyDown}
+            inputRef={inputRef}
+            disabled={gameWon || revealed}
+          />
           
-          <div className="space-y-2">
-            <Input
-              ref={inputRef}
-              type="text"
-              value={guess}
-              onChange={onGuessChange}
-              onKeyDown={onKeyDown}
-              placeholder="Enter your guess (Full Name)"
-              disabled={gameWon || revealed}
-              className={cn(
-                "w-full transition-all text-center",
-                (gameWon || revealed) && "bg-gray-100"
-              )}
-            />
-
-            {(gameWon || revealed) && (
-              <div className="text-center">
-                <a 
-                  href="https://www.instagram.com/sabrinacarpenter/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-sm font-bold text-gray-800 hover:text-blue-600 transition-colors"
-                >
-                  @sabrinacarpenter
-                </a>
-              </div>
-            )}
-
-            <Counter gameWon={gameWon} />
-            
-            {wrongAttempts >= 5 && !revealed && !gameWon && (
-              <button
-                onClick={onReveal}
-                className="w-full mt-2 py-2 px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded transition-colors"
-              >
-                STOP EDGING
-              </button>
-            )}
-            
-            {gameWon && (
-              <div className="text-center text-sm text-gray-600">
-                You gooned in <span className="font-bold">{finalTime}</span>!
-              </div>
-            )}
-
-            <CountdownTimer revealed={revealed || gameWon} />
-          </div>
-        </div>
-
-        <div className="flex justify-center mt-4">
-          {gameWon && (
+          {wrongAttempts >= 5 && !revealed && !gameWon && (
             <button
-              onClick={handleTwitterShare}
-              className="text-gray-500 hover:text-blue-400 transition-colors"
+              onClick={onReveal}
+              className="w-full mt-2 py-2 px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded transition-colors"
             >
-              <Twitter className="w-5 h-5" />
+              STOP EDGING
             </button>
           )}
         </div>
+
+        <GameFooter 
+          gameWon={gameWon}
+          revealed={revealed}
+          onTwitterShare={handleTwitterShare}
+        />
       </div>
     </Card>
   );
