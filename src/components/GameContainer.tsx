@@ -1,11 +1,14 @@
 import React from 'react';
-import { Timer } from "lucide-react";
+import { Timer, Twitter } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import GameImage from "@/components/GameImage";
 import WordBlanks from "@/components/WordBlanks";
 import StopWatch from "@/components/StopWatch";
+import Counter from "@/components/Counter";
+import CountdownTimer from "@/components/CountdownTimer";
 import { cn } from "@/lib/utils";
+import { Info } from "lucide-react";
 
 interface GameContainerProps {
   correctWord: string;
@@ -44,6 +47,12 @@ const GameContainer: React.FC<GameContainerProps> = ({
   finalTime = "",
   imageUrls
 }) => {
+  const handleTwitterShare = () => {
+    const tweetText = `I gooned to ${correctWord} in ${finalTime} seconds!\n#goonguessr\n`;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+    window.open(twitterUrl, '_blank');
+  };
+
   return (
     <Card className="w-full max-w-md mx-auto bg-white p-6 shadow-md rounded-xl">
       <div className="space-y-6">
@@ -89,6 +98,21 @@ const GameContainer: React.FC<GameContainerProps> = ({
                 (gameWon || revealed) && "bg-gray-100"
               )}
             />
+
+            {(gameWon || revealed) && (
+              <div className="text-center">
+                <a 
+                  href="https://www.instagram.com/sabrinacarpenter/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-sm font-bold text-gray-800 hover:text-blue-600 transition-colors"
+                >
+                  @sabrinacarpenter
+                </a>
+              </div>
+            )}
+
+            <Counter gameWon={gameWon} />
             
             {wrongAttempts >= 5 && !revealed && !gameWon && (
               <button
@@ -100,11 +124,24 @@ const GameContainer: React.FC<GameContainerProps> = ({
             )}
             
             {gameWon && (
-              <div className="text-center text-sm text-green-600 animate-fade-in font-medium">
-                <p>You gooned in {finalTime}!</p>
+              <div className="text-center text-sm text-gray-600">
+                You gooned in <span className="font-bold">{finalTime}</span>!
               </div>
             )}
+
+            <CountdownTimer revealed={revealed || gameWon} />
           </div>
+        </div>
+
+        <div className="flex justify-center mt-4">
+          {gameWon && (
+            <button
+              onClick={handleTwitterShare}
+              className="text-gray-500 hover:text-blue-400 transition-colors"
+            >
+              <Twitter className="w-5 h-5" />
+            </button>
+          )}
         </div>
       </div>
     </Card>

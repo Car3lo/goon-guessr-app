@@ -1,0 +1,11 @@
+name = "goon-guessr"
+main = "counter.js"
+compatibility_date = "2024-01-01"
+
+kv_namespaces = [
+  { binding = "GOON_GUESSR_KV", id = "36c6d27e855947039684c9ca672849c0" }
+]
+
+[vars]
+COUNTER_KEY = "counter"
+LAST_RESET_KEY = "last_reset"
