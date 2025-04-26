@@ -36,6 +36,11 @@ async function handleRequest(request, env) {
       now.getUTCFullYear() !== lastResetDate.getUTCFullYear()));
 
   if (shouldReset) {
+    // Delete previous day's data
+    await env.GOON_GUESSR_KV.delete(COUNTER);
+    await env.GOON_GUESSR_KV.delete(LAST_RESET);
+    
+    // Set new counter and reset time
     await env.GOON_GUESSR_KV.put(COUNTER, '0');
     await env.GOON_GUESSR_KV.put(LAST_RESET, now.toISOString());
   }

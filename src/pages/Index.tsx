@@ -20,7 +20,19 @@ const Index = () => {
   const [allCorrectLetters, setAllCorrectLetters] = useState<Set<string>>(new Set());
   const [wrongAttempts, setWrongAttempts] = useState(0);
   const [revealed, setRevealed] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const yesterdayCorrectWord = "Violet Myers";
+
+  const beforeRevealImages = [
+    "https://lh3.googleusercontent.com/pw/AP1GczPzrEoEgAeozWA0z56xofYjQIxPspFVaWfJM97nFVQUpzqJ0kB5khc141Of-VAmvmHIxkN4noObGz3k71SvQulB88Pi5GPRZ2MwYN1Gvbh-4HWNHz3Cbi6FuoKhzqlw1r_IY60EEgPKmrfwFaC_4KQ=w583-h777-s-no-gm",
+    "https://lh3.googleusercontent.com/pw/AP1GczPlA6FnbaEz-h6Re5IFYLtjqRckq18WEZ0006POCZK6OGf1B_xLIudklncRDaWGQ69w6hPgNq6Dt09J0f5A47p2WczL12aGX6sREYys420zifsTgAATBIbSLlUaHwzpmpIPUwKGYRlSJxKPv76WwE0=w718-h957-s-no-gm"
+  ];
+
+  const afterRevealImages = [
+    "https://pbs.twimg.com/media/GoVPfdBWMAEHByq?format=jpg&name=medium",
+    "https://pbs.twimg.com/media/GooRwDwXMAAKjzs?format=jpg&name=large"
+  ];
 
   useEffect(() => {
     if (inputRef.current) {
@@ -54,6 +66,7 @@ const Index = () => {
     if (normalizedGuess === normalizedCorrect && !gameWon) {
       setGameWon(true);
       setTimerRunning(false);
+      setRevealed(true);
     } else if (guess.trim() !== "") {
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 500);
@@ -66,6 +79,14 @@ const Index = () => {
   const handleReveal = () => {
     setRevealed(true);
     setTimerRunning(false);
+  };
+
+  const handleNextImage = () => {
+    setCurrentImageIndex(prev => (prev + 1) % beforeRevealImages.length);
+  };
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex(prev => (prev - 1 + beforeRevealImages.length) % beforeRevealImages.length);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -98,14 +119,15 @@ const Index = () => {
         onTimerUpdate={handleTimerUpdate}
         inputRef={inputRef}
         finalTime={finalTime}
-        imageUrls={[
-          "https://pbs.twimg.com/media/GoVPfdBWMAEHByq?format=jpg&name=medium",
-          "https://pbs.twimg.com/media/GooRwDwXMAAKjzs?format=jpg&name=large"
-        ]}
+        currentImageIndex={currentImageIndex}
+        onNextImage={handleNextImage}
+        onPrevImage={handlePrevImage}
+        beforeRevealImages={beforeRevealImages}
+        afterRevealImages={afterRevealImages}
       />
 
       <div className="text-[#C8C8C9] text-sm mt-4 mb-16">
-        Yesterday's baddie was Violet Myers
+        Yesterday's baddie was {yesterdayCorrectWord}
       </div>
       
       <footer className="w-full fixed bottom-0 left-0 bg-transparent py-4 text-center flex justify-center items-center gap-4">

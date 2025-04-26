@@ -22,7 +22,11 @@ interface GameContainerProps {
   onTimerUpdate: (time: string) => void;
   inputRef: React.RefObject<HTMLInputElement>;
   finalTime?: string;
-  imageUrls: string[];
+  currentImageIndex: number;
+  onNextImage: () => void;
+  onPrevImage: () => void;
+  beforeRevealImages: string[];
+  afterRevealImages: string[];
 }
 
 const GameContainer: React.FC<GameContainerProps> = ({
@@ -41,7 +45,11 @@ const GameContainer: React.FC<GameContainerProps> = ({
   onTimerUpdate,
   inputRef,
   finalTime = "",
-  imageUrls
+  currentImageIndex,
+  onNextImage,
+  onPrevImage,
+  beforeRevealImages,
+  afterRevealImages
 }) => {
   const handleTwitterShare = () => {
     const tweetText = `I gooned to ${correctWord} in ${finalTime} seconds!\n#goonguessr\n`;
@@ -55,7 +63,10 @@ const GameContainer: React.FC<GameContainerProps> = ({
         <GameHeader />
         
         <GameImage 
-          imageUrls={imageUrls}
+          imageUrls={revealed ? afterRevealImages : beforeRevealImages}
+          currentImageIndex={currentImageIndex}
+          onNextImage={onNextImage}
+          onPrevImage={onPrevImage}
           altText="Game Image" 
           gameWon={gameWon} 
         />

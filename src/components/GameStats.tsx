@@ -19,6 +19,9 @@ interface GameStatsProps {
   disabled: boolean;
 }
 
+const socialmediausername = "@sabrinacarpenter"
+const socialmedialink = "https://www.instagram.com/sabrinacarpenter/"
+
 const GameStats: React.FC<GameStatsProps> = ({
   timerRunning,
   onTimerUpdate,
@@ -58,12 +61,12 @@ const GameStats: React.FC<GameStatsProps> = ({
       {(gameWon || revealed) && (
         <div className="text-center">
           <a 
-            href="https://www.instagram.com/sabrinacarpenter/" 
+            href={socialmedialink} 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-sm font-bold text-gray-800 hover:text-blue-600 transition-colors"
           >
-            @sabrinacarpenter
+            {socialmediausername}
           </a>
         </div>
       )}
