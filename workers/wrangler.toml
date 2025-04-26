@@ -3,7 +3,7 @@ main = "counter.js"
 compatibility_date = "2024-01-01"
 
 kv_namespaces = [
-  { binding = "GOON_GUESSR_KV", id = "36c6d27e855947039684c9ca672849c0" }
+  { binding = "GOON_GUESSR_KV", id = "${KV_NAMESPACE_ID}" }
 ]
 
 [vars]

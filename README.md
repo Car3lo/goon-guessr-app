@@ -1,7 +1,5 @@
 # Goon Guessr
 
-## PRIVATE REPOSITORY AS IT HAS MY KV NAMESPACE ID DO NOT SHARE - CARLOIT
-
 A daily guessing game where players try to identify a different model from various sources. The game resets every 24 hours at 8:00 AM UTC+8.
 
 ## Features
@@ -52,7 +50,8 @@ wrangler deploy
 
 - Node.js 18+
 - Cloudflare account
-- KV namespace for the counter
+- KV namespace for the counter (input your kv namespace id in the .env_sample file and rename to .env)
+
 
 ## License
 
