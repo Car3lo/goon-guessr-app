@@ -8,9 +8,12 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import GameContainer from "@/components/GameContainer";
+import { getTodaysGameData, getYesterdaysCorrectWord } from "@/data/schedule";
 
 const Index = () => {
-  const correctWord = "Sabrina Carpenter"; // Matches the images
+  const gameData = getTodaysGameData();
+  const yesterdayCorrectWord = getYesterdaysCorrectWord();
+  
   const [gameWon, setGameWon] = useState(false);
   const [guess, setGuess] = useState("");
   const [submittedGuess, setSubmittedGuess] = useState("");
@@ -22,17 +25,6 @@ const Index = () => {
   const [revealed, setRevealed] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
-  const yesterdayCorrectWord = "Violet Myers";
-
-  const beforeRevealImages = [
-    "https://lh3.googleusercontent.com/pw/AP1GczPzrEoEgAeozWA0z56xofYjQIxPspFVaWfJM97nFVQUpzqJ0kB5khc141Of-VAmvmHIxkN4noObGz3k71SvQulB88Pi5GPRZ2MwYN1Gvbh-4HWNHz3Cbi6FuoKhzqlw1r_IY60EEgPKmrfwFaC_4KQ=w583-h777-s-no-gm",
-    "https://lh3.googleusercontent.com/pw/AP1GczPlA6FnbaEz-h6Re5IFYLtjqRckq18WEZ0006POCZK6OGf1B_xLIudklncRDaWGQ69w6hPgNq6Dt09J0f5A47p2WczL12aGX6sREYys420zifsTgAATBIbSLlUaHwzpmpIPUwKGYRlSJxKPv76WwE0=w718-h957-s-no-gm"
-  ];
-
-  const afterRevealImages = [
-    "https://pbs.twimg.com/media/GoVPfdBWMAEHByq?format=jpg&name=medium",
-    "https://pbs.twimg.com/media/GooRwDwXMAAKjzs?format=jpg&name=large"
-  ];
 
   useEffect(() => {
     if (inputRef.current) {
@@ -42,7 +34,7 @@ const Index = () => {
 
   const handleGuess = () => {
     const normalizedGuess = guess.toLowerCase().trim();
-    const normalizedCorrect = correctWord.toLowerCase();
+    const normalizedCorrect = gameData.correctWord.toLowerCase();
     
     setSubmittedGuess(guess);
     
@@ -82,11 +74,11 @@ const Index = () => {
   };
 
   const handleNextImage = () => {
-    setCurrentImageIndex(prev => (prev + 1) % beforeRevealImages.length);
+    setCurrentImageIndex(prev => (prev + 1) % gameData.beforeRevealImages.length);
   };
 
   const handlePrevImage = () => {
-    setCurrentImageIndex(prev => (prev - 1 + beforeRevealImages.length) % beforeRevealImages.length);
+    setCurrentImageIndex(prev => (prev - 1 + gameData.beforeRevealImages.length) % gameData.beforeRevealImages.length);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -104,7 +96,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4 md:p-8">
       <GameContainer 
-        correctWord={correctWord}
+        correctWord={gameData.correctWord}
         gameWon={gameWon}
         guess={guess}
         submittedGuess={submittedGuess}
@@ -122,8 +114,8 @@ const Index = () => {
         currentImageIndex={currentImageIndex}
         onNextImage={handleNextImage}
         onPrevImage={handlePrevImage}
-        beforeRevealImages={beforeRevealImages}
-        afterRevealImages={afterRevealImages}
+        beforeRevealImages={gameData.beforeRevealImages}
+        afterRevealImages={gameData.afterRevealImages}
       />
 
       <div className="text-[#C8C8C9] text-sm mt-4 mb-16">
