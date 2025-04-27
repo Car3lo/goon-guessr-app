@@ -17,6 +17,7 @@ interface GameStatsProps {
   onKeyDown: (e: React.KeyboardEvent) => void;
   inputRef: React.RefObject<HTMLInputElement>;
   disabled: boolean;
+  placeholder: string;
 }
 
 const socialmediausername = "@sabrinacarpenter"
@@ -32,7 +33,8 @@ const GameStats: React.FC<GameStatsProps> = ({
   onGuessChange,
   onKeyDown,
   inputRef,
-  disabled
+  disabled,
+  placeholder
 }) => {
   return (
     <div className="space-y-2">
@@ -50,7 +52,7 @@ const GameStats: React.FC<GameStatsProps> = ({
         value={guess}
         onChange={onGuessChange}
         onKeyDown={onKeyDown}
-        placeholder="Enter your guess (Full Name)"
+        placeholder={placeholder}
         disabled={disabled}
         className={cn(
           "w-full transition-all text-center",

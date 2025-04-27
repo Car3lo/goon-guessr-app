@@ -27,6 +27,7 @@ interface GameContainerProps {
   onPrevImage: () => void;
   beforeRevealImages: string[];
   afterRevealImages: string[];
+  placeholder: string;
 }
 
 const GameContainer: React.FC<GameContainerProps> = ({
@@ -49,7 +50,8 @@ const GameContainer: React.FC<GameContainerProps> = ({
   onNextImage,
   onPrevImage,
   beforeRevealImages,
-  afterRevealImages
+  afterRevealImages,
+  placeholder
 }) => {
   const handleTwitterShare = () => {
     const tweetText = `I gooned to ${correctWord} in ${finalTime} seconds!\n#goonguessr\n`;
@@ -92,6 +94,7 @@ const GameContainer: React.FC<GameContainerProps> = ({
             onKeyDown={onKeyDown}
             inputRef={inputRef}
             disabled={gameWon || revealed}
+            placeholder={placeholder}
           />
           
           {wrongAttempts >= 5 && !revealed && !gameWon && (

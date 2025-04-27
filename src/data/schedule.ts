@@ -4,6 +4,7 @@ interface GameData {
   correctWord: string;
   socialMediaUsername: string;
   socialMediaLink: string;
+  placeholder: string;
 }
 
 interface Schedule {
@@ -11,34 +12,106 @@ interface Schedule {
 }
 
 export const gameSchedule: Schedule = {
-  "2025-04-28": {
-    beforeRevealImages: [
-      // Add your images for this date
-      "https://lh3.googleusercontent.com/pw/AP1GczPzrEoEgAeozWA0z56xofYjQIxPspFVaWfJM97nFVQUpzqJ0kB5khc141Of-VAmvmHIxkN4noObGz3k71SvQulB88Pi5GPRZ2MwYN1Gvbh-4HWNHz3Cbi6FuoKhzqlw1r_IY60EEgPKmrfwFaC_4KQ=w583-h777-s-no-gm",
-      "https://lh3.googleusercontent.com/pw/AP1GczPlA6FnbaEz-h6Re5IFYLtjqRckq18WEZ0006POCZK6OGf1B_xLIudklncRDaWGQ69w6hPgNq6Dt09J0f5A47p2WczL12aGX6sREYys420zifsTgAATBIbSLlUaHwzpmpIPUwKGYRlSJxKPv76WwE0=w718-h957-s-no-gm"
-    ],
-    afterRevealImages: [
-      // Add your images for this date
-      "https://pbs.twimg.com/media/GoVPfdBWMAEHByq?format=jpg&name=medium",
-      "https://pbs.twimg.com/media/GooRwDwXMAAKjzs?format=jpg&name=large"
-    ],
-    // Add the rest:
-    correctWord: "Sabrina Carpenter",
-    socialMediaUsername: "@sabrinacarpenter",
-    socialMediaLink: "https://www.instagram.com/sabrinacarpenter/"
-  },
   "2025-04-27": {
     beforeRevealImages: [
+      // Add your images for this date
+      "https://i.imgur.com/znh9s31.jpeg",
+      "https://i.imgur.com/s1JR43P.jpeg"
+    ],
+    afterRevealImages: [
+      // Add your images for this date
+      "https://i.imgur.com/34sK7ft.jpeg",
+      "https://i.imgur.com/uzuX27F.jpeg"
+    ],
+    // Add the rest:
+    correctWord: "Lea Martinez",
+    socialMediaUsername: "@slayeas",
+    socialMediaLink: "https://www.instagram.com/slayeas/",
+    placeholder: "Enter your guess (Full Name)"
+  },
+  "2025-04-28": {
+    beforeRevealImages: [
       // Add your images for April 28
-      "https://lh3.googleusercontent.com/pw/AP1GczNgrV4e4ijXrujMM1Yf4U2MsFIQe2vtRhG5IY_pF_WoRwhTdQS6izaMpDcWo9UbkeSbOKUEvDyaB2HkjZOh6q4yvzVod29DxhsHqcBrv7xPYT6esA1WNo2hSUVYFhWJGcWAcgFE7Ssxy7b4n3jqvaA=w611-h815-s-no-gm"
+      "https://i.imgur.com/OKT0vCb.jpeg"
     ],
     afterRevealImages: [
       // Add your images for April 28
-      "https://lh3.googleusercontent.com/pw/AP1GczNE3VsWtEpSyZoHjAUY9lAWxRJhY-9FgdLYL3GYPkppPpUCkz_2dDZrlzEA7y9C2e1JJnU4TkU1-3PqDE2p7JNy762EtCzQ9YSW6Vh_F_EgWO_BcKg1NVQw20SLxvgYHseyTI0dnNc-RFg-pGczcqY=w717-h957-s-no-gm"
+      "https://i.imgur.com/JkvPAqI.jpeg"
     ],
     correctWord: "Vera Dijkmans",
     socialMediaUsername: "@veradijkmans",
-    socialMediaLink: "https://www.instagram.com/veradijkmans"
+    socialMediaLink: "https://www.instagram.com/veradijkmans",
+    placeholder: "Enter your guess (Full Name)"
+  },
+  "2025-04-29": {
+    beforeRevealImages: [
+      // Add your images for April 28
+      "https://i.imgur.com/YFF39NW.png",
+      "https://i.imgur.com/dVbbGkn.png"
+    ],
+    afterRevealImages: [
+      // Add your images for April 28
+      "https://pbs.twimg.com/media/GoVPfdBWMAEHByq?format=jpg&name=medium",
+      "https://pbs.twimg.com/media/GooRwDwXMAAKjzs?format=jpg&name=large"
+    ],
+    correctWord: "Sabrina Carpenter",
+    socialMediaUsername: "@sabrinacarpenter",
+    socialMediaLink: "https://www.instagram.com/sabrinacarpenter/",
+    placeholder: "Enter your guess (Full Name)"
+  },
+  "2025-04-30": {
+    beforeRevealImages: [
+      "https://i.imgur.com/znh9s31.jpeg",
+      "https://i.imgur.com/s1JR43P.jpeg"
+    ],
+    afterRevealImages: [
+      "https://i.imgur.com/34sK7ft.jpeg",
+      "https://i.imgur.com/uzuX27F.jpeg"
+    ],
+    correctWord: "Lea Martinez",
+    socialMediaUsername: "@slayeas",
+    socialMediaLink: "https://www.instagram.com/slayeas/",
+    placeholder: "Enter your guess (Full Name)"
+  },
+  "2025-05-01": {
+    beforeRevealImages: [
+      "https://i.imgur.com/OKT0vCb.jpeg"
+    ],
+    afterRevealImages: [
+      "https://i.imgur.com/JkvPAqI.jpeg"
+    ],
+    correctWord: "Vera Dijkmans",
+    socialMediaUsername: "@veradijkmans",
+    socialMediaLink: "https://www.instagram.com/veradijkmans",
+    placeholder: "Enter your guess (Full Name)"
+  },
+  "2025-05-02": {
+    beforeRevealImages: [
+      "https://i.imgur.com/YFF39NW.png",
+      "https://i.imgur.com/dVbbGkn.png"
+    ],
+    afterRevealImages: [
+      "https://pbs.twimg.com/media/GoVPfdBWMAEHByq?format=jpg&name=medium",
+      "https://pbs.twimg.com/media/GooRwDwXMAAKjzs?format=jpg&name=large"
+    ],
+    correctWord: "Sabrina Carpenter",
+    socialMediaUsername: "@sabrinacarpenter",
+    socialMediaLink: "https://www.instagram.com/sabrinacarpenter/",
+    placeholder: "Enter your guess (Full Name)"
+  },
+  "2025-05-03": {
+    beforeRevealImages: [
+      "https://i.imgur.com/znh9s31.jpeg",
+      "https://i.imgur.com/s1JR43P.jpeg"
+    ],
+    afterRevealImages: [
+      "https://i.imgur.com/34sK7ft.jpeg",
+      "https://i.imgur.com/uzuX27F.jpeg"
+    ],
+    correctWord: "Lea Martinez",
+    socialMediaUsername: "@slayeas",
+    socialMediaLink: "https://www.instagram.com/slayeas/",
+    placeholder: "Enter your guess (Full Name)"
   }
   // Add more dates as needed
 };

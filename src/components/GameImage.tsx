@@ -47,14 +47,16 @@ const GameImage: React.FC<GameImageProps> = ({
         {imageUrls.map((url, index) => (
           <CarouselItem key={index}>
             <div className="flex justify-center">
-              <img 
-                src={url} 
-                alt={`${altText} ${index + 1}`}
-                className={cn(
-                  "w-11/12 object-contain transition-all duration-300",
-                  gameWon ? "filter-none" : "filter brightness-[0.97] contrast-[1.03]"
-                )}
-              />
+              <div className="relative w-11/12 aspect-[3/4] overflow-hidden">
+                <img 
+                  src={url} 
+                  alt={`${altText} ${index + 1}`}
+                  className={cn(
+                    "absolute inset-0 w-full h-full object-cover transition-all duration-300",
+                    gameWon ? "filter-none" : "filter brightness-[0.97] contrast-[1.03]"
+                  )}
+                />
+              </div>
             </div>
           </CarouselItem>
         ))}

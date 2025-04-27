@@ -116,6 +116,7 @@ const Index = () => {
         onPrevImage={handlePrevImage}
         beforeRevealImages={gameData.beforeRevealImages}
         afterRevealImages={gameData.afterRevealImages}
+        placeholder={gameData.placeholder}
       />
 
       <div className="text-[#C8C8C9] text-sm mt-4 mb-16">
