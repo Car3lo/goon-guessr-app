@@ -15,7 +15,7 @@ export const gameSchedule: Schedule = {
   "2025-04-27": {
     beforeRevealImages: [
       // Add your images for this date
-      "https://i.imgur.com/znh9s31.jpeg",
+      "https://i.imgur.com/RZzl5VR.jpeg",
       "https://i.imgur.com/s1JR43P.jpeg"
     ],
     afterRevealImages: [
@@ -61,7 +61,7 @@ export const gameSchedule: Schedule = {
   },
   "2025-04-30": {
     beforeRevealImages: [
-      "https://i.imgur.com/znh9s31.jpeg",
+      "https://i.imgur.com/RZzl5VR.jpeg",
       "https://i.imgur.com/s1JR43P.jpeg"
     ],
     afterRevealImages: [
@@ -101,7 +101,7 @@ export const gameSchedule: Schedule = {
   },
   "2025-05-03": {
     beforeRevealImages: [
-      "https://i.imgur.com/znh9s31.jpeg",
+      "https://i.imgur.com/RZzl5VR.jpeg",
       "https://i.imgur.com/s1JR43P.jpeg"
     ],
     afterRevealImages: [
