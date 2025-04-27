@@ -15,6 +15,7 @@ A daily guessing game where players try to identify different models from variou
 - Node.js (v16 or higher)
 - npm or yarn
 - Cloudflare account
+- GitHub account
 
 ## Local Development
 
@@ -58,34 +59,46 @@ yarn global add wrangler
 wrangler login
 ```
 
-### Deploying the Site
+### GitHub Integration Setup
 
-1. Build the project:
+1. Push your code to GitHub:
 ```bash
-npm run build
-# or
-yarn build
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/yourusername/goon-guessr.git
+git push -u origin main
 ```
 
-2. Deploy to Cloudflare Pages:
-```bash
-wrangler pages deploy dist
-```
+2. Set up Cloudflare Pages with GitHub:
+   - Go to [Cloudflare Dashboard](https://dash.cloudflare.com/)
+   - Click on "Pages" in the left sidebar
+   - Click "Create a project"
+   - Select "Connect to Git"
+   - Choose "GitHub" as your Git provider
+   - Authorize Cloudflare to access your GitHub account
+   - Select your repository (goon-guessr)
 
-### Automatic Deployments
-
-For automatic deployments, you can connect your GitHub repository to Cloudflare Pages:
-
-1. Go to the Cloudflare Dashboard
-2. Navigate to "Pages"
-3. Click "Create a project"
-4. Select "Connect to Git"
-5. Choose your repository
-6. Configure build settings:
+3. Configure build settings:
    - Build command: `npm run build` or `yarn build`
    - Build output directory: `dist`
    - Node version: 16 (or higher)
-7. Click "Save and Deploy"
+   - Environment variables (if needed):
+     ```
+     NODE_VERSION=16
+     ```
+
+4. Click "Save and Deploy"
+
+### Automatic Deployments
+
+Once set up, your site will automatically deploy when you:
+- Push to the main branch
+- Create a pull request
+- Merge a pull request
+
+You can monitor deployments in the Cloudflare Pages dashboard.
 
 ### Custom Domain Setup
 
@@ -102,6 +115,11 @@ Create a `.env` file in the root directory with the following variables:
 ```env
 VITE_CLOUDFLARE_API_TOKEN=your_api_token_here
 ```
+
+For GitHub deployments, add these variables in the Cloudflare Pages dashboard:
+1. Go to your project settings
+2. Navigate to "Environment variables"
+3. Add your variables there
 
 ## Contributing
 
