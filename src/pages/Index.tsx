@@ -117,6 +117,8 @@ const Index = () => {
         beforeRevealImages={gameData.beforeRevealImages}
         afterRevealImages={gameData.afterRevealImages}
         placeholder={gameData.placeholder}
+        socialMediaUsername={gameData.socialMediaUsername}
+        socialMediaLink={gameData.socialMediaLink}
       />
 
       <div className="text-[#C8C8C9] text-sm mt-4 mb-16">

@@ -28,6 +28,8 @@ interface GameContainerProps {
   beforeRevealImages: string[];
   afterRevealImages: string[];
   placeholder: string;
+  socialMediaUsername: string;
+  socialMediaLink: string;
 }
 
 const GameContainer: React.FC<GameContainerProps> = ({
@@ -51,7 +53,9 @@ const GameContainer: React.FC<GameContainerProps> = ({
   onPrevImage,
   beforeRevealImages,
   afterRevealImages,
-  placeholder
+  placeholder,
+  socialMediaUsername,
+  socialMediaLink
 }) => {
   const handleTwitterShare = () => {
     const tweetText = `I gooned to ${correctWord} in ${finalTime} seconds!\n#goonguessr\n`;
@@ -95,6 +99,8 @@ const GameContainer: React.FC<GameContainerProps> = ({
             inputRef={inputRef}
             disabled={gameWon || revealed}
             placeholder={placeholder}
+            socialMediaUsername={socialMediaUsername}
+            socialMediaLink={socialMediaLink}
           />
           
           {wrongAttempts >= 5 && !revealed && !gameWon && (

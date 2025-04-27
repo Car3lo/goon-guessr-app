@@ -18,10 +18,9 @@ interface GameStatsProps {
   inputRef: React.RefObject<HTMLInputElement>;
   disabled: boolean;
   placeholder: string;
+  socialMediaUsername: string;
+  socialMediaLink: string;
 }
-
-const socialmediausername = "@sabrinacarpenter"
-const socialmedialink = "https://www.instagram.com/sabrinacarpenter/"
 
 const GameStats: React.FC<GameStatsProps> = ({
   timerRunning,
@@ -34,8 +33,15 @@ const GameStats: React.FC<GameStatsProps> = ({
   onKeyDown,
   inputRef,
   disabled,
-  placeholder
+  placeholder,
+  socialMediaUsername,
+  socialMediaLink
 }) => {
+  if (!socialMediaUsername || !socialMediaLink) {
+    console.error('Social media data is missing');
+    return null;
+  }
+
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-center">
@@ -63,12 +69,12 @@ const GameStats: React.FC<GameStatsProps> = ({
       {(gameWon || revealed) && (
         <div className="text-center">
           <a 
-            href={socialmedialink} 
+            href={socialMediaLink} 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-sm font-bold text-gray-800 hover:text-blue-600 transition-colors"
           >
-            {socialmediausername}
+            {socialMediaUsername}
           </a>
         </div>
       )}
