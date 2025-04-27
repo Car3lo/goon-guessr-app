@@ -11,7 +11,7 @@ const Counter: React.FC<CounterProps> = ({ gameWon }) => {
   // Use localhost URL in development, production URL otherwise
   const baseUrl = process.env.NODE_ENV === 'development' 
     ? 'http://localhost:8787'
-    : 'https://goon-guessr-counter.YOUR_WORKER_DOMAIN';
+    : 'https://goon-guessr.goonguessr6.workers.dev/';
 
   const fetchCount = async () => {
     try {
