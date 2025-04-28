@@ -29,11 +29,17 @@ const WordBlanks: React.FC<WordBlanksProps> = ({
     const normalizedSubmittedGuess = submittedGuess.toLowerCase().trim();
     const normalizedCorrect = word.toLowerCase();
     
+    const correctWords = normalizedCorrect.split(" ");
+    const currentGuessWords = normalizedCurrentGuess.split(" ");
+    const submittedGuessWords = normalizedSubmittedGuess.split(" ");
+    
     // Create a map of all letters in the current guess for quick lookup
     const currentGuessLetters = new Set(normalizedCurrentGuess.replace(/\s/g, '').split(''));
     
-    const result = normalizedCorrect.split(" ").map((correctWord, wordIndex) => {
+    const result = correctWords.map((correctWord, wordIndex) => {
       let displayWord = "";
+      const currentGuessWord = currentGuessWords[wordIndex] || "";
+      const submittedGuessWord = submittedGuessWords[wordIndex] || "";
       
       for (let i = 0; i < correctWord.length; i++) {
         const positionKey = `${wordIndex}_${i}`;
