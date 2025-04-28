@@ -44,3 +44,5 @@ A daily guessing game where players try to identify different baddies from vario
 - change schedule.ts every week or smth to update baddies
 - cloudflare pages and workers dashboard to see how your page/worker is doing
 
+april 29: what if i told u that i fallen
+
