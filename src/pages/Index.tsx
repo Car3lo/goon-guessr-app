@@ -64,17 +64,20 @@ const Index = () => {
     
     const newCorrectLetters = new Set(allCorrectLetters);
     
+    // For each word in the correct answer
     correctWords.forEach((correctWord, wordIndex) => {
-      const guessWord = guessWords[wordIndex] || "";
-      
-      // Check each letter in the correct word against all letters in the guess
-      for (let i = 0; i < correctWord.length; i++) {
-        for (let j = 0; j < guessWord.length; j++) {
-          if (correctWord[i] === guessWord[j]) {
-            newCorrectLetters.add(`${wordIndex}_${i}`);
+      // For each letter in the current guess
+      guessWords.forEach((guessWord) => {
+        // For each letter in the correct word
+        for (let i = 0; i < correctWord.length; i++) {
+          // If this letter exists in the guess word
+          for (let j = 0; j < guessWord.length; j++) {
+            if (correctWord[i] === guessWord[j]) {
+              newCorrectLetters.add(`${wordIndex}_${i}`);
+            }
           }
         }
-      }
+      });
     });
     
     setAllCorrectLetters(newCorrectLetters);

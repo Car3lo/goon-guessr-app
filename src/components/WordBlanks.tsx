@@ -38,8 +38,6 @@ const WordBlanks: React.FC<WordBlanksProps> = ({
     
     const result = correctWords.map((correctWord, wordIndex) => {
       let displayWord = "";
-      const currentGuessWord = currentGuessWords[wordIndex] || "";
-      const submittedGuessWord = submittedGuessWords[wordIndex] || "";
       
       for (let i = 0; i < correctWord.length; i++) {
         const positionKey = `${wordIndex}_${i}`;
