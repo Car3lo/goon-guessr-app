@@ -30,6 +30,7 @@ interface GameContainerProps {
   placeholder: string;
   socialMediaUsername: string;
   socialMediaLink: string;
+  showRevealButton: boolean;
 }
 
 const GameContainer: React.FC<GameContainerProps> = ({
@@ -55,7 +56,8 @@ const GameContainer: React.FC<GameContainerProps> = ({
   afterRevealImages,
   placeholder,
   socialMediaUsername,
-  socialMediaLink
+  socialMediaLink,
+  showRevealButton
 }) => {
   const handleTwitterShare = () => {
     const tweetText = `I gooned to ${correctWord} in ${finalTime} seconds!\n#goonguessr\n`;
@@ -82,7 +84,8 @@ const GameContainer: React.FC<GameContainerProps> = ({
             correctWord={correctWord} 
             gameWon={gameWon} 
             isShaking={isShaking}
-            currentGuess={submittedGuess}
+            currentGuess={guess}
+            submittedGuess={submittedGuess}
             allCorrectLetters={allCorrectLetters}
             revealed={revealed}
           />
@@ -103,7 +106,7 @@ const GameContainer: React.FC<GameContainerProps> = ({
             socialMediaLink={socialMediaLink}
           />
           
-          {wrongAttempts >= 5 && !revealed && !gameWon && (
+          {showRevealButton && !revealed && !gameWon && (
             <button
               onClick={onReveal}
               className="w-full mt-2 py-2 px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded transition-colors"

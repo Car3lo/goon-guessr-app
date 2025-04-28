@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 
@@ -7,6 +6,7 @@ interface WordBlanksProps {
   gameWon: boolean;
   isShaking: boolean;
   currentGuess?: string;
+  submittedGuess?: string;
   allCorrectLetters?: Set<string>;
   revealed?: boolean;
 }
@@ -16,34 +16,35 @@ const WordBlanks: React.FC<WordBlanksProps> = ({
   gameWon, 
   isShaking,
   currentGuess = "",
+  submittedGuess = "",
   allCorrectLetters = new Set(),
   revealed = false
 }) => {
-  const createBlanksWithCorrectLetters = (word: string, guess: string) => {
+  const createBlanksWithCorrectLetters = (word: string, currentGuess: string, submittedGuess: string) => {
     if (revealed) {
       return word; // Show the full word when revealed
     }
 
-    const normalizedGuess = guess.toLowerCase().trim();
+    const normalizedCurrentGuess = currentGuess.toLowerCase().trim();
+    const normalizedSubmittedGuess = submittedGuess.toLowerCase().trim();
     const normalizedCorrect = word.toLowerCase();
     
-    const correctWords = normalizedCorrect.split(" ");
-    const guessWords = normalizedGuess.split(" ");
+    // Create a map of all letters in the current guess for quick lookup
+    const currentGuessLetters = new Set(normalizedCurrentGuess.replace(/\s/g, '').split(''));
     
-    const result = correctWords.map((correctWord, wordIndex) => {
+    const result = normalizedCorrect.split(" ").map((correctWord, wordIndex) => {
       let displayWord = "";
-      const guessWord = guessWords[wordIndex] || "";
       
       for (let i = 0; i < correctWord.length; i++) {
         const positionKey = `${wordIndex}_${i}`;
+        const currentChar = word.split(" ")[wordIndex][i];
         
-        if (
-          (i < guessWord.length && correctWord[i] === guessWord[i]) || 
-          allCorrectLetters.has(positionKey)
-        ) {
-          displayWord += word.split(" ")[wordIndex][i];
+        // Show letter if it's been correctly guessed before (from submitted guesses)
+        if (allCorrectLetters.has(positionKey)) {
+          displayWord += currentChar;
         } else {
-          displayWord += "_";
+          // Check if the current letter exists anywhere in the current guess
+          displayWord += currentGuessLetters.has(correctWord[i]) ? currentChar : "_";
         }
       }
       return displayWord;
@@ -62,7 +63,7 @@ const WordBlanks: React.FC<WordBlanksProps> = ({
     >
       {gameWon 
         ? correctWord 
-        : createBlanksWithCorrectLetters(correctWord, currentGuess)
+        : createBlanksWithCorrectLetters(correctWord, currentGuess, submittedGuess)
       }
     </div>
   );

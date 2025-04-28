@@ -24,13 +24,33 @@ const Index = () => {
   const [wrongAttempts, setWrongAttempts] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showRevealButton, setShowRevealButton] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
+    
+    // Show reveal button after 5 seconds
+    const revealTimer = setTimeout(() => {
+      setShowRevealButton(true);
+    }, 5000);
+    
+    return () => clearTimeout(revealTimer);
   }, []);
+
+  // Show reveal button when wrong attempts reach 3
+  useEffect(() => {
+    if (wrongAttempts >= 3) {
+      setShowRevealButton(true);
+    }
+  }, [wrongAttempts]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newGuess = e.target.value;
+    setGuess(newGuess);
+  };
 
   const handleGuess = () => {
     const normalizedGuess = guess.toLowerCase().trim();
@@ -38,6 +58,7 @@ const Index = () => {
     
     setSubmittedGuess(guess);
     
+    // Update correct letters only when Enter is pressed
     const correctWords = normalizedCorrect.split(" ");
     const guessWords = normalizedGuess.split(" ");
     
@@ -46,9 +67,12 @@ const Index = () => {
     correctWords.forEach((correctWord, wordIndex) => {
       const guessWord = guessWords[wordIndex] || "";
       
+      // Check each letter in the correct word against all letters in the guess
       for (let i = 0; i < correctWord.length; i++) {
-        if (i < guessWord.length && correctWord[i] === guessWord[i]) {
-          newCorrectLetters.add(`${wordIndex}_${i}`);
+        for (let j = 0; j < guessWord.length; j++) {
+          if (correctWord[i] === guessWord[j]) {
+            newCorrectLetters.add(`${wordIndex}_${i}`);
+          }
         }
       }
     });
@@ -105,7 +129,7 @@ const Index = () => {
         revealed={revealed}
         timerRunning={timerRunning}
         wrongAttempts={wrongAttempts}
-        onGuessChange={(e) => setGuess(e.target.value)}
+        onGuessChange={handleInputChange}
         onKeyDown={handleKeyDown}
         onReveal={handleReveal}
         onTimerUpdate={handleTimerUpdate}
@@ -119,6 +143,7 @@ const Index = () => {
         placeholder={gameData.placeholder}
         socialMediaUsername={gameData.socialMediaUsername}
         socialMediaLink={gameData.socialMediaLink}
+        showRevealButton={showRevealButton}
       />
 
       <div className="text-[#C8C8C9] text-sm mt-4 mb-16">
