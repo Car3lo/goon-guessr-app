@@ -101,11 +101,11 @@ const Index = () => {
   };
 
   const handleNextImage = () => {
-    setCurrentImageIndex(prev => (prev + 1) % gameData.beforeRevealImages.length);
+    setCurrentImageIndex(prev => (prev + 1) % gameData.images.length);
   };
 
   const handlePrevImage = () => {
-    setCurrentImageIndex(prev => (prev - 1 + gameData.beforeRevealImages.length) % gameData.beforeRevealImages.length);
+    setCurrentImageIndex(prev => (prev - 1 + gameData.images.length) % gameData.images.length);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -141,8 +141,7 @@ const Index = () => {
         currentImageIndex={currentImageIndex}
         onNextImage={handleNextImage}
         onPrevImage={handlePrevImage}
-        beforeRevealImages={gameData.beforeRevealImages}
-        afterRevealImages={gameData.afterRevealImages}
+        images={gameData.images}
         placeholder={gameData.placeholder}
         socialMediaUsername={gameData.socialMediaUsername}
         socialMediaLink={gameData.socialMediaLink}

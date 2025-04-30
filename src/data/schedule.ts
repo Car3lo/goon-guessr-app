@@ -1,6 +1,5 @@
 interface GameData {
-  beforeRevealImages: string[];
-  afterRevealImages: string[];
+  images: string[];
   correctWord: string;
   socialMediaUsername: string;
   socialMediaLink: string;
@@ -13,29 +12,17 @@ interface Schedule {
 
 export const gameSchedule: Schedule = {
   "2025-04-27": {
-    beforeRevealImages: [
-      // Add your images for this date
-      "https://i.imgur.com/RZzl5VR.jpeg",
-      "https://i.imgur.com/s1JR43P.jpeg"
-    ],
-    afterRevealImages: [
-      // Add your images for this date
+    images: [
       "https://i.imgur.com/34sK7ft.jpeg",
       "https://i.imgur.com/uzuX27F.jpeg"
     ],
-    // Add the rest:
     correctWord: "Lea Martinez",
     socialMediaUsername: "@slayeas",
     socialMediaLink: "https://www.instagram.com/slayeas/",
     placeholder: "Enter your guess (Full Name)"
   },
   "2025-04-28": {
-    beforeRevealImages: [
-      // Add your images for April 28
-      "https://i.imgur.com/OKT0vCb.jpeg"
-    ],
-    afterRevealImages: [
-      // Add your images for April 28
+    images: [
       "https://i.imgur.com/JkvPAqI.jpeg"
     ],
     correctWord: "Vera Dijkmans",
@@ -44,13 +31,7 @@ export const gameSchedule: Schedule = {
     placeholder: "Enter your guess (Full Name)"
   },
   "2025-04-29": {
-    beforeRevealImages: [
-      // Add your images for April 28
-      "https://i.imgur.com/YFF39NW.png",
-      "https://i.imgur.com/dVbbGkn.png"
-    ],
-    afterRevealImages: [
-      // Add your images for April 28
+    images: [
       "https://pbs.twimg.com/media/GoVPfdBWMAEHByq?format=jpg&name=medium",
       "https://pbs.twimg.com/media/GooRwDwXMAAKjzs?format=jpg&name=large"
     ],
@@ -60,11 +41,7 @@ export const gameSchedule: Schedule = {
     placeholder: "Enter your guess (Full Name)"
   },
   "2025-04-30": {
-    beforeRevealImages: [
-      "https://i.imgur.com/RZzl5VR.jpeg",
-      "https://i.imgur.com/s1JR43P.jpeg"
-    ],
-    afterRevealImages: [
+    images: [
       "https://i.imgur.com/34sK7ft.jpeg",
       "https://i.imgur.com/uzuX27F.jpeg"
     ],
@@ -74,10 +51,7 @@ export const gameSchedule: Schedule = {
     placeholder: "Enter your guess (Full Name)"
   },
   "2025-05-01": {
-    beforeRevealImages: [
-      "https://i.imgur.com/OKT0vCb.jpeg"
-    ],
-    afterRevealImages: [
+    images: [
       "https://i.imgur.com/JkvPAqI.jpeg"
     ],
     correctWord: "Vera Dijkmans",
@@ -86,11 +60,7 @@ export const gameSchedule: Schedule = {
     placeholder: "Enter your guess (Full Name)"
   },
   "2025-05-02": {
-    beforeRevealImages: [
-      "https://i.imgur.com/YFF39NW.png",
-      "https://i.imgur.com/dVbbGkn.png"
-    ],
-    afterRevealImages: [
+    images: [
       "https://pbs.twimg.com/media/GoVPfdBWMAEHByq?format=jpg&name=medium",
       "https://pbs.twimg.com/media/GooRwDwXMAAKjzs?format=jpg&name=large"
     ],
@@ -100,11 +70,7 @@ export const gameSchedule: Schedule = {
     placeholder: "Enter your guess (Full Name)"
   },
   "2025-05-03": {
-    beforeRevealImages: [
-      "https://i.imgur.com/RZzl5VR.jpeg",
-      "https://i.imgur.com/s1JR43P.jpeg"
-    ],
-    afterRevealImages: [
+    images: [
       "https://i.imgur.com/34sK7ft.jpeg",
       "https://i.imgur.com/uzuX27F.jpeg"
     ],

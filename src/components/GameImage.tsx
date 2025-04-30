@@ -51,10 +51,7 @@ const GameImage: React.FC<GameImageProps> = ({
                 <img 
                   src={url} 
                   alt={`${altText} ${index + 1}`}
-                  className={cn(
-                    "absolute inset-0 w-full h-full object-cover transition-all duration-300",
-                    gameWon ? "filter-none" : "filter brightness-[0.97] contrast-[1.03]"
-                  )}
+                  className="absolute inset-0 w-full h-full object-cover transition-all duration-300"
                 />
               </div>
             </div>
