@@ -52,9 +52,8 @@ export const gameSchedule: Schedule = {
   },
   "2025-05-01": {
     images: [
-      "https://ibb.co/j9m10jb9",
-      "https://ibb.co/SXKCBc7C",
-      "https://ibb.co/pvk8ZCzs"
+      "https://i.ibb.co/qLKPq27L/Snap-Insta-to-473740130-18480923038001486-1965616125113370944-n.jpg",
+      "https://i.ibb.co/3yPqWtN8/Snap-Insta-to-484144194-18490851487001486-3337812738107921353-n.jpg"
     ],
     correctWord: "Sheeny Velasco",
     socialMediaUsername: "@sheenyberry",
