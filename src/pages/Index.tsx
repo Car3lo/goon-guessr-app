@@ -157,7 +157,7 @@ const Index = () => {
           Thanks for gooning!
         </p>
         <a
-          href="https://ko-fi.com/cartilosan"
+          href="https://ko-fi.com/shiraishi1"
           target="_blank"
           rel="noopener noreferrer"
           className="text-[#C8C8C9] hover:text-[#a8a8a9] transition-colors"
