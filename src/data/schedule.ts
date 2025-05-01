@@ -52,11 +52,13 @@ export const gameSchedule: Schedule = {
   },
   "2025-05-01": {
     images: [
-      "https://i.imgur.com/JkvPAqI.jpeg"
+      "https://ibb.co/j9m10jb9",
+      "https://ibb.co/SXKCBc7C",
+      "https://ibb.co/pvk8ZCzs"
     ],
-    correctWord: "Vera Dijkmans",
-    socialMediaUsername: "@veradijkmans",
-    socialMediaLink: "https://www.instagram.com/veradijkmans",
+    correctWord: "Sheeny Velasco",
+    socialMediaUsername: "@sheenyberry",
+    socialMediaLink: "https://getallmylinks.com/sheenyberry",
     placeholder: "Enter your guess (Full Name)"
   },
   "2025-05-02": {
