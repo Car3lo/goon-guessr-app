@@ -53,6 +53,7 @@ export const gameSchedule: Schedule = {
   "2025-05-01": {
     images: [
       "https://i.ibb.co/qLKPq27L/Snap-Insta-to-473740130-18480923038001486-1965616125113370944-n.jpg",
+      "https://i.ibb.co/pv3FdQrF/Snap-Insta-to-483876399-18491527819001486-1017862629739679861-n.jpg",
       "https://i.ibb.co/3yPqWtN8/Snap-Insta-to-484144194-18490851487001486-3337812738107921353-n.jpg"
     ],
     correctWord: "Sheeny Velasco",
