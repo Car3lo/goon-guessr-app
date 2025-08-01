@@ -46,7 +46,7 @@ export const gameSchedule: Schedule = {
     socialMediaLink: "https://www.instagram.com/katarina.deme/?hl=en",
     placeholder: "Enter your guess"
   },
-  "2025-07-23": {
+  "2025-08-04": {
     images: ["https://pbs.twimg.com/media/GooRwDwXMAAKjzs?format=jpg&name=large"],
     correctWord: "Sabrina Carpenter",
     socialMediaUsername: "@sabrinacarpenter",
@@ -74,7 +74,7 @@ export const gameSchedule: Schedule = {
     socialMediaLink: "https://www.instagram.com/awesomeantjay/",
     placeholder: "Enter your guess"
   },
-  "2025-07-27": {
+  "2025-08-03": {
     images: ["https://pbs.twimg.com/media/GoloZ5fWAAA02if?format=jpg&name=4096x4096"],
     correctWord: "Sydney Sweeney",
     socialMediaUsername: "@sydney_sweeney",
@@ -95,7 +95,7 @@ export const gameSchedule: Schedule = {
     socialMediaLink: "https://www.instagram.com/ella_netzer8/",
     placeholder: "Enter your guess"
   },
-  "2025-07-30": {
+  "2025-08-02": {
     images: ["https://pbs.twimg.com/media/GoUCt48XEAA3zZ0?format=jpg&name=4096x4096"],
     correctWord: "Lil Nyachty",
     socialMediaUsername: "@lilnyachtyy",
@@ -111,9 +111,9 @@ export const gameSchedule: Schedule = {
   },
   "2025-08-01": {
     images: ["https://pbs.twimg.com/media/Gkk--H_bkAAHvA0?format=jpg&name=large"],
-    correctWord: "Izel Palacio",
-    socialMediaUsername: "@ayzelll_",
-    socialMediaLink: "https://www.instagram.com/ayzelll_/",
+    correctWord: "Antje Utgaard",
+    socialMediaUsername: "@awesomeantjay",
+    socialMediaLink: "https://www.instagram.com/awesomeantjay/",
     placeholder: "Enter your guess"
   }
 };
