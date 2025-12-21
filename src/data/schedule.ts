@@ -11,21 +11,21 @@ interface Schedule {
 }
 
 export const gameSchedule: Schedule = {
-  "2025-08-09": {
+  "2025-12-21": {
     images: ["https://pbs.twimg.com/media/GceW5mzXAAAWLO2?format=jpg&name=large"],
     correctWord: "Violet Myers",
     socialMediaUsername: "@waifuviolet",
     socialMediaLink: "https://www.instagram.com/waifuviolet/?hl=en",
     placeholder: "Enter your guess"
   },
-  "2025-08-10": {
+  "2025-12-22": {
     images: ["https://pbs.twimg.com/media/GpcKBmYW4AAIxDS?format=jpg&name=large"],
     correctWord: "Thea Thompson",
     socialMediaUsername: "@theaadoraa",
     socialMediaLink: "https://www.instagram.com/theaadoraa/",
     placeholder: "Enter your guess"
   },
-  "2025-08-11": {
+  "2025-12-20": {
     images: ["https://pbs.twimg.com/media/Gkk--H_bkAAHvA0?format=jpg&name=large"],
     correctWord: "Antje Utgaard",
     socialMediaUsername: "@awesomeantjay",
