@@ -11,7 +11,7 @@ interface Schedule {
 }
 
 export const gameSchedule: Schedule = {
-  "2025-12-21": {
+  "2025-12-19": {
     images: ["https://pbs.twimg.com/media/GceW5mzXAAAWLO2?format=jpg&name=large"],
     correctWord: "Violet Myers",
     socialMediaUsername: "@waifuviolet",
@@ -102,7 +102,7 @@ export const gameSchedule: Schedule = {
     socialMediaLink: "https://www.instagram.com/awesomeantjay/",
     placeholder: "Enter your guess"
   },
-  "2025-08-22": {
+  "2025-12-21": {
     images: ["https://pbs.twimg.com/media/GomcbUTWMAAhIWA?format=jpg&name=large"],
     correctWord: "Sydney Thomas",
     socialMediaUsername: "@itssydneythomas",
